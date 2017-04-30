@@ -1,0 +1,7 @@
+-cp src
+-main Main
+-js ./dist/app.js
+-lib createjs-full
+-lib nape
+-D NAPE_RELEASE_BUILD
+-dce full

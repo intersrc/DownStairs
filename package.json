@@ -1,0 +1,38 @@
+{
+  "name": "downstairs",
+  "version": "1.0.0",
+  "description": "An html5 game written in Haxe + Nape + CreateJs, 2014",
+  "main": "index.js",
+  "scripts": {
+    "prepare": "haxelib git createjs-full git@github.com:intersrc/CreateJS-Haxe.git",
+    "dev": "gulp watch",
+    "build": "gulp build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/intersrc/DownStairs.git"
+  },
+  "keywords": [
+    "canvas",
+    "game",
+    "haxe",
+    "nape",
+    "createjs"
+  ],
+  "author": "Wu Yu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/intersrc/DownStairs/issues"
+  },
+  "homepage": "https://github.com/intersrc/DownStairs#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-haxe": "^0.4.3",
+    "gulp-if": "^2.0.2",
+    "gulp-uglify": "^2.1.2"
+  },
+  "haxe": {
+    "version": "3.4.2"
+  }
+}

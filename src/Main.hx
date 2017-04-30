@@ -26,25 +26,25 @@ import nape.space.Space;
  */
 
 class Main {
-	
+
 	static function main() {
 		Common.autoSize();
 		G.stageWidth = Common.stageWidth;
 		G.stageHeight = Common.stageHeight;
-		
+
 		/**
 		* mainStage
 		*/
 		var stage = new Stage( cast Browser.document.getElementById( "mainCanvas" ) );
 		//stage.snapToPixelsEnabled = true;
 		G.stage = stage;
-		
+
 		//From here
 		var gravity = Vec2.weak(0, 600);
         G.space = new Space(gravity);
-		
+
 		var mute = new Mute();
-		
+
 		G.reset = function() {
 			if (G.game != null) {
 				G.game.destory();
@@ -66,7 +66,7 @@ class Main {
 			G.stage.addChild(mute);
 		}
 		G.reset();
-		
+
 		var time:Float;
 		function update(event):Void {
 			time = event.delta / 1000;
@@ -75,12 +75,12 @@ class Main {
 			}
 			G.stage.update(event);
 		}
-		
+
 		/*
 		* createjs
 		*/
 		Ticker.addEventListener("tick", update);
 		//Ticker.timingMode = Ticker.TIMEOUT;
 		Ticker.setFPS(60);
-	}	
+	}
 }

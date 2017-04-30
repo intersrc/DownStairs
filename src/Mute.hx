@@ -14,9 +14,9 @@ class Mute extends Container {
 
 	public function new() {
 		super();
-		
+
 		if (Sound.initializeDefaultPlugins()) {
-			
+
 			var normal:Array<Dynamic> = [0, 1, "normal"];
 			var data = {
 				images: [Manifest.BMP_MUTE],
@@ -30,20 +30,20 @@ class Mute extends Container {
 			sprite.alpha = 0.49;
 			sprite.x = G.stageWidth - 32 - 8;
 			sprite.y = 8;
-			
+
 			sprite.gotoAndStop(Sound.getMute()?1:0);
 			addChild(sprite);
-			
+
 			var bg = new Bitmap(Manifest.BMP_MUTE_BG);
 			bg.x = sprite.x;
 			bg.y = sprite.y;
 			bg.alpha = 0.01;
 			addChild(bg);
-			
+
 			bg.addEventListener("click", function():Void {
 				Sound.setMute(!Sound.getMute());
 				sprite.gotoAndStop(Sound.getMute()?1:0);
-			} );			
+			} );
 		}
-	}	
+	}
 }

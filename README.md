@@ -5,16 +5,28 @@ An html5 game written in Haxe + Nape + CreateJs, 2014
 
 [https://intersrc.github.io/DownStairs/](https://intersrc.github.io/DownStairs/)
 
-## Build
+## Build & Dev
+
+Install deps
+
+```
+yarn
+```
 
 Set createjs-full to forked version:
 
 ```
-haxelib git createjs-full git@github.com:intersrc/CreateJS-Haxe.git
+yarn prepare
 ```
 
-haxe
+Build
 
 ```
-haxe build.hxml
+yarn build
+```
+
+Dev
+
+```
+yarn dev
 ```

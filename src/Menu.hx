@@ -11,12 +11,12 @@ import createjs.tweenjs.Tween;
  * ...
  * @author wuyu
  */
-class Menu extends Container {	
+class Menu extends Container {
 	public static var first:Bool = true;
-	
+
 	public function new(endCallback:Void->Void) {
 		super();
-		
+
 		var background = new Shape();
 		background.graphics.beginFill("#000");
 		background.graphics.drawRect(0, 0, G.stageWidth, G.stageHeight);
@@ -24,7 +24,7 @@ class Menu extends Container {
 		background.alpha = 0.5;
 		background.cache(0, 0, G.stageWidth, G.stageHeight);
 		addChild(background);
-		
+
 		if (first) {
 			first = false;
 			//点击开始
@@ -35,7 +35,7 @@ class Menu extends Container {
 			text.x = (G.stageWidth) / 2;
 			text.y = (G.stageHeight - text.getBounds().height) / 2;
 			addChild(text);
-			
+
 			var gap_big:Int = Std.int(((G.stageWidth / 2) - 96) / 2);
 			var gap_mid:Int = Std.int(gap_big / 2);
 			var shape:Shape = new Shape();
@@ -58,7 +58,7 @@ class Menu extends Container {
 			right.y = shape.y + gap_big;
 			right.alpha = 0.5;
 			addChild(right);
-			
+
 			background.addEventListener("click", function(event) {
 				endCallback();
 			});
@@ -75,18 +75,18 @@ class Menu extends Container {
 				endCallback();
 			});
 			addChild(text);
-			
+
 			background.addEventListener("click", function(event) {
 				endCallback();
 			});
-			
+
 			this.y = -G.stageHeight;
 			Tween.get(this)
 				 .to( { y:0 }, 1000, Ease.bounceOut );
 		}
 	}
-	
+
 	public function destroy():Void {
-		
+
 	}
 }

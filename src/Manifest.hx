@@ -14,7 +14,7 @@ class Manifest {
 	public static inline var BMP_RIGHT:String = "./assets/arrow_right_1.png";
 	public static inline var BMP_MUTE:String = "./assets/mute_0.png";
 	public static inline var BMP_MUTE_BG:String = "./assets/mute_bg_0.png";
-	
+
 	public static inline var SND_ELASTIC:String = "./assets/elastic.wav";
 	//public static inline var SND_LAND:String = "./assets/land.wav";
 	public static inline var SND_DIE:String = "./assets/hurt1.wav";
