@@ -33,6 +33,9 @@ class Player extends Actor {
 	private var facingLeft:Bool;
 	private var sprite:Sprite;
 	
+	private var stageMouseX:Float = 0;
+	private var stageMouseY:Float = 0;
+	
 	public function new(x:Float, y:Float) {
 		var w = 16;// 24;//16;
 		var h = 44;// 56;//44;
@@ -73,17 +76,27 @@ class Player extends Actor {
 		// enabled mouse over / out events
 		//G.stage.enableMouseOver(10);
 		
+		stageMouseX = G.stageWidth / 2;
+		stageMouseY = G.stageHeight / 2;
+		
 		G.stage.addEventListener("stagemousedown", onMouseDown);
 		G.stage.addEventListener("stagemouseup", onMouseUp);
-		
+		G.stage.addEventListener("stagemousemove", onMouseMove);		
 	}
 	
 	private function onMouseDown(e):Void {
 		mousePressed = true;
+		stageMouseX = e.stageX;
+		stageMouseY = e.stageY;
 	}
 	
 	private function onMouseUp(e):Void {
 		mousePressed = false;
+	}
+	
+	private function onMouseMove(e):Void {
+		stageMouseX = e.stageX;
+		stageMouseY = e.stageY;
 	}
 	
 	override public function destroy():Void {
@@ -93,7 +106,7 @@ class Player extends Actor {
 		
 		G.stage.removeEventListener("stagemousedown", onMouseDown);
 		G.stage.removeEventListener("stagemouseup", onMouseUp);
-		
+		G.stage.removeEventListener("stagemousemove", onMouseMove);		
 	}
 	
 	public function die():Void {		
@@ -113,18 +126,12 @@ class Player extends Actor {
 		
 		if(exists){
 			
-			if (mousePressed && G.stage.mouseY > 48) {
-				/*if (G.stage.mouseX < this.body.position.x) {
+			if (mousePressed && stageMouseY > 48) {
+				trace(stageMouseX);
+				if (stageMouseX < G.stageWidth / 2) {
 					facingLeft = true;
 				}
-				else if (G.stage.mouseX > this.body.position.x) {
-					facingLeft = false;
-				}*/
-				
-				if (G.stage.mouseX < G.stageWidth / 2) {
-					facingLeft = true;
-				}
-				else if (G.stage.mouseX > G.stageWidth / 2) {
+				else if (stageMouseX > G.stageWidth / 2) {
 					facingLeft = false;
 				}
 				this.body.applyImpulse(Vec2.weak(facingLeft? -IMPULSE : IMPULSE, 0));

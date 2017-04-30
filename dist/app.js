@@ -1476,6 +1476,8 @@ down_Floor.prototype = $extend(game_Actor.prototype,{
 	__class__: down_Floor
 });
 var down_Player = function(x,y) {
+	this.stageMouseY = 0;
+	this.stageMouseX = 0;
 	this.mousePressed = false;
 	var w = 16;
 	var h = 44;
@@ -1571,23 +1573,33 @@ var down_Player = function(x,y) {
 		_this8.unshift(obj1);
 	}
 	createjs.Touch.enable(G.stage);
+	this.stageMouseX = G.stageWidth / 2;
+	this.stageMouseY = G.stageHeight / 2;
 	G.stage.addEventListener("stagemousedown",$bind(this,this.onMouseDown));
 	G.stage.addEventListener("stagemouseup",$bind(this,this.onMouseUp));
+	G.stage.addEventListener("stagemousemove",$bind(this,this.onMouseMove));
 };
 down_Player.__name__ = true;
 down_Player.__super__ = game_Actor;
 down_Player.prototype = $extend(game_Actor.prototype,{
 	onMouseDown: function(e) {
 		this.mousePressed = true;
+		this.stageMouseX = e.stageX;
+		this.stageMouseY = e.stageY;
 	}
 	,onMouseUp: function(e) {
 		this.mousePressed = false;
+	}
+	,onMouseMove: function(e) {
+		this.stageMouseX = e.stageX;
+		this.stageMouseY = e.stageY;
 	}
 	,destroy: function() {
 		game_Actor.prototype.destroy.call(this);
 		this.sprite = null;
 		G.stage.removeEventListener("stagemousedown",$bind(this,this.onMouseDown));
 		G.stage.removeEventListener("stagemouseup",$bind(this,this.onMouseUp));
+		G.stage.removeEventListener("stagemousemove",$bind(this,this.onMouseMove));
 	}
 	,die: function() {
 		if(this.exists) {
@@ -1600,10 +1612,11 @@ down_Player.prototype = $extend(game_Actor.prototype,{
 	,update: function() {
 		game_Actor.prototype.update.call(this);
 		if(this.exists) {
-			if(this.mousePressed && G.stage.mouseY > 48) {
-				if(G.stage.mouseX < G.stageWidth / 2) {
+			if(this.mousePressed && this.stageMouseY > 48) {
+				console.log(this.stageMouseX);
+				if(this.stageMouseX < G.stageWidth / 2) {
 					this.facingLeft = true;
-				} else if(G.stage.mouseX > G.stageWidth / 2) {
+				} else if(this.stageMouseX > G.stageWidth / 2) {
 					this.facingLeft = false;
 				}
 				var tmp = this.body;
