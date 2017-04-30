@@ -1,0 +1,18 @@
+-cp src
+-main Main
+-js ./dist/app.js
+-lib createjs-full
+-lib nape
+-D NAPE_RELEASE_BUILD
+-dce full
+
+--next
+
+-cp src
+-main MainPreload
+-js ./dist/pre.js
+-lib createjs-full
+-dce full
+
+# verbose
+# -v

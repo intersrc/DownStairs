@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>interSrc's DownStairs</title>
+	<meta name="description" content="" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimal-ui" />
+	<meta name="mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<!--<link rel="icon" sizes="256x256" href="assets/__Icon256.png">-->
+	<!--<link rel="icon" sizes="196x196" href="assets/__Icon196.png">-->
+	<!--<link rel="icon" sizes="128x128" href="assets/__Icon128.png">	-->
+	<!--<link rel="apple-touch-icon" href="assets/__Icon196.png" />-->
+	
+	<style>
+	html		{ height: 100%; margin: 0px; padding: 0px; }
+	body		{ background: #000; color: #808080; font-family: 'orbitron-webfont'; margin: 0px;  padding: 0px; height:100%; -webkit-user-select: none; overflow: hidden; }
+	canvas		{-webkit-tap-highlight-color: rgba(255, 255, 255, 0); margin-left: 0px; margin-top: 0px;
+				/*width: 640px; height: 480px;*/
+				background: url(./assets/back_1.png);}
+	</style>
+	
+	<script src="./lib/createjs-2015.11.26.min.js"></script>
+</head>
+<body>
+	<div id="mainDiv">
+		<canvas id="mainCanvas" data-target="./dist/app.js" disabled-fullScreen="default"></canvas>
+	</div>
+	
+	<script src="./dist/pre.js"></script>
+</body>
+</html>
